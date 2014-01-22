@@ -1,0 +1,15 @@
+{
+  "name": "fuzzy-fat-pants",
+  "description": "Fuzzy Fat Pants",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "3.4.7",
+    "mongoose": "*",
+    "jquery": "*",
+    "underscore": "*",
+    "moment": "*",
+    "consolidate": "*",
+    "handlebars": "*"
+  }
+}
