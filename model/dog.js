@@ -7,7 +7,11 @@ var dogSchema = new mongoose.Schema({
   breed_id: Array,
   birthday: Date,
   gender: String,
-  vet_id: Number
+  vet_id: Number,
+  spay_neuter: Boolean,
+  color: String,
+  weight: Number,
+  microchip_id: Number
 });
 
 var Dog = module.exports = mongoose.model('Dog', dogSchema);
