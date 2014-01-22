@@ -4,8 +4,8 @@ var dogSchema = new mongoose.Schema({
   id: Number,
   owner_id: Number,
   name: String,
-  breed: String,
-  age: String,
+  breed_id: Array,
+  birthday: Date,
   gender: String,
   vet_id: Number
 });
