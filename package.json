@@ -6,10 +6,15 @@
   "dependencies": {
     "express": "3.4.7",
     "mongoose": "*",
+    "mongodb": "*",
     "jquery": "*",
     "underscore": "*",
     "moment": "*",
     "consolidate": "*",
-    "handlebars": "*"
+    "handlebars": "*",
+    "passport": "*",
+    "passport-local": "*",
+    "bcrypt": "*",
+    "express3-handlebars": "*"
   }
 }
