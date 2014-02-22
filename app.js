@@ -10,8 +10,10 @@ var express = require('express')
   , hbs
   // models
   , user = require('./model/user')
+  , Dog = require('./model/dog')
   // controllers
   , userController = require('./controllers/user')
+  , petController = require('./controllers/pet')
   , main = require('./controllers/main');
 
 require('./model/passport')(passport);
@@ -32,7 +34,7 @@ function ensureAuthenticated(req, res, next) {
 // CONFIGURATIONS ======================================================================================================
 
 // party like its ____
-app.listen(1999);
+app.listen(1998);
 
 app.configure(function() {
   app.set('views', __dirname + '/views');
@@ -62,13 +64,38 @@ app.configure(function() {
 
 // ROUTES ==============================================================================================================
 
-app.get('/', function(req, res){ res.render('index', { user: req.user }); });
+app.get('/', function(req, res){
+  if (req.user) {
+    var pets = Dog.find({ owner_id: req.user.email }, function(derp, dog) {
+      res.render('index', { user: req.user, dog: dog });
+    });
+  } else {
+    res.render('index')
+  }
+});
+
 app.get('/account', ensureAuthenticated, function(req, res){ res.render('account', { user: req.user }); });
 app.get('/login', function(req, res){ res.render('login', { user: req.user, message: req.session.messages }); });
 app.get('/signup', function(req, res){ res.render('signup'); })
 app.get('/logout', function(req, res){ req.logout(); res.redirect('/'); });
+app.get('/pet/new', function(req, res) {
+  res.render('pet/new');
+})
 
-app.post('/signup', function(req, res, next) { 
+app.post('/pet/new', function(req, res, next) {
+  console.log(req.user.email)
+  req.body.owner_id = req.user.email;
+  console.log(req.body);
+  petController.addNewDog(req.body, function(success) {
+    if (success) {
+      res.redirect('/');
+    } else {
+      res.render('/');
+    }
+  })
+});
+
+app.post('/signup', function(req, res, next) {
   userController.addNewUser(req.body, function(success) {
     if (success) {
       res.redirect('/');

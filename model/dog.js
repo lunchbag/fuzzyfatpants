@@ -2,16 +2,16 @@ var mongoose = require('mongoose');
 
 var dogSchema = new mongoose.Schema({
   id: Number,
-  owner_id: Number,
+  owner_id: String,
   name: String,
-  breed_id: Array,
-  birthday: Date,
+  breed_id: String,
+  birthday: String,
   gender: String,
-  vet_id: Number,
-  spay_neuter: Boolean,
+  vet_id: String,
+  spay_neuter: String,
   color: String,
-  weight: Number,
-  microchip_id: Number
+  weight: String,
+  microchip_id: String
 });
 
 var Dog = module.exports = mongoose.model('Dog', dogSchema);

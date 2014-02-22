@@ -8,7 +8,17 @@
 
     <!-- Uses built-in `if` helper. -->
   {{#if user}}
-    <h1>hi {{user}}</h1>
+    <h1>hi {{user.email}}</h1>
+
+    {{#each dog}}
+      {{ name }}
+      {{ breed }}
+      {{ birthday }}
+      {{ weight }}
+      {{ spay_neuter }}
+      {{ microchip_id }}
+      {{ color }}
+    {{/each}}
   {{else}}
     derp, nope
   {{/if}}
