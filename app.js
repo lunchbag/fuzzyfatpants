@@ -74,13 +74,23 @@ app.get('/', function(req, res){
   }
 });
 
-app.get('/account', ensureAuthenticated, function(req, res){ res.render('account', { user: req.user }); });
+// app.get('/account', ensureAuthenticated, function(req, res){ res.render('account', { user: req.user }); });
 app.get('/login', function(req, res){ res.render('login', { user: req.user, message: req.session.messages }); });
 app.get('/signup', function(req, res){ res.render('signup'); })
 app.get('/logout', function(req, res){ req.logout(); res.redirect('/'); });
 app.get('/pet/new', function(req, res) {
   res.render('pet/new');
-})
+});
+
+app.get('/pet/:id', function(req, res) {
+  if (req.user) {
+    var pets = Dog.findOne({ name: req.params.id }, function(derp, dog) {
+      res.render('pet/show', { user: req.user, dog: dog });
+    });
+  } else {
+    res.render('index')
+  }
+});
 
 app.post('/pet/new', function(req, res, next) {
   console.log(req.user.email)
