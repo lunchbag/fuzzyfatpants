@@ -4,7 +4,12 @@
   module.exports.addNewDog = function (opts, cb) {
     var dog = new Dog(opts);
     dog.save(function (err) {
-      if (err.name === 'CastError') {
+      console.log("wat")
+      console.log(err);
+      if (!err) {
+        console.log('callback')
+        cb(true);
+      } else if (err.name === 'CastError') {
         // fails on first instance
         var error = {
           type: err.name
@@ -30,9 +35,6 @@
           }
         }
         cb(false, error);
-      }
-      else {
-        cb(true);
       }
     });
   }
