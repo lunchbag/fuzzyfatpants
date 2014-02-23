@@ -93,14 +93,12 @@ app.get('/pet/:id', function(req, res) {
 });
 
 app.post('/pet/new', function(req, res, next) {
-  console.log(req.user.email)
   req.body.owner_id = req.user.email;
-  console.log(req.body);
-  petController.addNewDog(req.body, function(success) {
+  petController.addNewDog(req.body, function(success, error) {
     if (success) {
       res.redirect('/');
     } else {
-      res.render('/');
+      res.render('pet/new', error);
     }
   })
 });

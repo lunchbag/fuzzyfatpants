@@ -1,12 +1,12 @@
 <form action="/pet/new" method="post">
-  <input type="text" name="name" placeholder="name"/> <br/>
-  <input type="text" name="breed" placeholder="breed"/> <br/>
-  <input type="text" name="birthday" placeholder="birthday"/> <br/>
-  <input type="text" name="gender" placeholder="gender"/> <br/>
-  <input type="text" name="vet" placeholder="vet"/> <br/>
-  <input type="text" name="spay_neuter" placeholder="spay_neuter"/> <br/>
-  <input type="text" name="color" placeholder="color"/> <br/>
-  <input type="text" name="weight" placeholder="weight"/> <br/>
-  <input type="text" name="microchip_id" placeholder="microchip_id"/> <br/>
+  <input type="text" name="name" value="{{ name.value }}" placeholder="name"/> {{ name.msg }}<br/>
+  <input type="text" name="breed_id" value="{{ breed.value }}" placeholder="breed"/> {{ breed.msg }}<br/>
+  <input type="text" name="birthday" value="{{ birthday.value }}" placeholder="birthday"/> {{ birthday.msg }}<br/>
+  <input type="text" name="gender" value="{{ gender.value }}" placeholder="gender"/> {{ gender.msg }}<br/>
+  <input type="text" name="vet_id" value="{{ vet.value }}" placeholder="vet"/> {{ vet.msg }}<br/>
+  <input type="text" name="spay_neuter" value="{{ spay_neuter.value }}" placeholder="spay_neuter"/> {{ spay_neuter.msg }}<br/>
+  <input type="text" name="color" value="{{ color.value }}" placeholder="color"/> {{ color.msg }}<br/>
+  <input type="text" name="weight" value="{{ weight.value }}" placeholder="weight"/> {{ weight.msg }}<br/>
+  <input type="text" name="microchip_id" value="{{ microchip_id.name }}" placeholder="microchip_id"/> {{ microchip_id.msg }}<br/>
   <input type="submit" value="Submit"/>
 </form>

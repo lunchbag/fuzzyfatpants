@@ -3,8 +3,8 @@
   , LocalStrategy = require('passport-local').Strategy
   , User = require('./user');
 
-  module.exports = function(passport){
-    passport.serializeUser(function(user, done) {
+  module.exports = function (passport) {
+    passport.serializeUser(function (user, done) {
       var createAccessToken = function () {
         var token = user.generateRandomToken();
         User.findOne( { accessToken: token }, function (err, existingUser) {
