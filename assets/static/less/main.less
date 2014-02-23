@@ -1,0 +1,131 @@
+// for high level styles and misc
+@import "variables.less";
+@import "bootstrap/variables.less";
+@import "bootstrap/mixins.less";
+
+// general styles
+@font-family-base: @font-family-sans-serif;
+
+body {
+  padding-top: 70px;
+}
+
+.section {
+    .make-xs-column(12);
+    margin-bottom: 2em;
+}
+
+// Profile page
+#sidebar-nav {
+    position: absolute;
+	width: 150px;
+	float: left;
+	margin: 0em;
+	#sidebar-menu {
+	    list-style: none;
+	    padding-left: 0px;
+	    li {
+	        padding: 10px 15px;
+	        &a {
+	            display: block;
+	        }
+	    }
+	    li:hover {
+	        border-right: 5px solid green;
+	        background-color: @gray-lighter;
+	    }
+	}
+}
+
+.content {
+    position: relative;
+	margin-left: 150px;
+}
+
+.user-info {
+}
+
+.profile {
+    .section;
+    .profile-pic {
+        float: left;
+        width: 160px;
+        height: 160px;
+        margin-right: 2.5em;
+    }
+    .profile-info {
+        float: left;
+        margin-right: 2.5em;
+        table {
+            font-size: 1em;
+            line-height: 1em;
+        }
+    }
+}
+
+.actions {
+    .section;
+}
+
+.vaccine {
+    .section;
+    table {
+        font-size: 1em;
+        line-height: 1em;
+    }
+}
+
+
+
+.splash {
+  background-image: url('../img/splash.jpg');
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  min-height: 300px;
+  text-align: center;
+  color: @gray;
+}
+
+.logo {
+  max-height: 50px;
+  text-align: center;
+  & img {
+    height: 60px;
+  }
+}
+
+.signup {
+  margin: auto;
+  & input, button {
+    font-size: 18px;
+    height: auto;
+  }
+  input {
+    border-radius: 4px 0 0 4px;
+    float: left;
+    width: 300px;
+  }
+  button {
+    border-radius: 0 4px 4px 0;
+    float: left;
+  }
+}
+
+.form-group {
+  display: inline-block;
+}
+
+.features {
+  background-image: url('../img/orange_texture.jpg');
+}
+
+.feature {
+  .make-md-column(4);
+  padding: 15px;
+  color: @gray-lighter;
+}
+
+//Buttons
+.btn-orange {
+  .button-variant(@btn-orange-color; @btn-orange-bg; @orange);
+}

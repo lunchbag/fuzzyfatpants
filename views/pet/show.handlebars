@@ -1,9 +1,171 @@
-{{#if dog}}
-  {{ dog.name }}
-  {{ dog.breed }}
-  {{ dog.birthday }}
-  {{ dog.weight }}
-  {{ dog.spay_neuter }}
-  {{ dog.microchip_id }}
-  {{ dog.color }}
-{{/if}}
+<!doctype html>
+<meta name="viewport" content="width=device-width">
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Pet Records</title>
+    <link rel="icon" type="image/ico" href="/static/img/favicon.ico" />
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
+
+    <!-- javascript -->
+    <script src="/static/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="/static/js/less.js" type="text/javascript"></script>
+    <script src="/static/js/bootstrap.min.js" type="text/javascript"></script>
+
+  </head>
+
+  <body>
+    <!-- Nav -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+       <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Fuzzy Paws LOGO</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a>Welcome {{user.email}}</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-cog"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Account settings</a></li>
+              <li><a href="#">Sign out</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav><!-- End Nav -->
+
+    <!-- Uses built-in `if` helper. -->
+    {{#if user}}
+
+      <div class="container">
+
+        <div id="sidebar-nav">
+          <ul id="sidebar-menu">
+              <li><a href="#">Pet #1</a></li>            
+              <li><a href="#">Pet #2</a></li>
+              <li><a href="#">+ Add pet</a></li>
+            </ul>
+        </div>
+        {{#if dog}}       
+        <div class="content">
+          <div class="container-fluid">
+
+            <!-- Dog profile -->
+            <div class="profile">
+              <!-- Picture -->
+              <img src="/static/img/dog-profile4.jpg" class="profile-pic">
+              <!-- Information -->
+              <div class="profile-info table-responsive">
+                <table class="table-condensed">
+                  <tbody>
+                    <tr>
+                      <th>Name</th>
+                      <td>{{ dog.name }}</td>
+                    </tr>
+                    <tr>
+                      <th>Birthday</th>
+                      <td>{{ dog.birthday }}</td>
+                    </tr>
+                    <tr>
+                      <th>Gender</th>
+                      <td>{{ dog.gender }}</td>
+                    </tr>
+                    <tr>
+                      <th>Breed</th>
+                      <td>{{ dog.breed }}</td>
+                    </tr>
+                    <tr>
+                      <th>Color</th>
+                      <td>{{ dog.color }}</td>
+                    </tr>
+                    <tr>
+                      <th>Weight</th>
+                      <td>{{ dog.weight }}</td>
+                    </tr>
+                    <tr>
+                      <th>Spay/Neuter Status</th>
+                      <td>{{ dog.spay_neuter }}</td>
+                    </tr>
+                    <tr>
+                      <th>Microchip #</th>
+                      <td>{{ dog.microchip_id }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- Edit button -->
+              <button type="button" class="profile_edit btn btn-default">Edit</button>
+            </div>
+
+          </div>
+          <!-- End profile -->
+
+          <!-- Actions -->
+          <div class="actions">
+            <button type="button" class="act-btn btn btn-success" data-toggle="tooltip" data-placement="bottom" title="Enter your vet's information and get your pet's history seamlessly uploaded">Auto Import</button>
+            <button type="button" class="act-btn btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Click here to add more vaccines to the table below">Add Vaccine</button>
+          </div>
+
+          <!-- Vaccine table -->
+          <div class="vaccine table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Vaccination</th>
+                  <th>Date Completed</th>
+                  <th>Date of Next Vaccination</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Rabies</td>
+                  <td>10/20/13</td>
+                  <td>10/20/14</td>
+                </tr>
+                <tr>
+                  <td>Bordetella</td>
+                  <td>10/20/13</td>
+                  <td>10/20/14</td>
+                </tr>
+                <tr>
+                  <td>Parvo</td>
+                  <td>Click to enter</td>
+                  <td>Unknown</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          {{/if}}
+
+        </div>
+      </div>
+
+      <div class="panel-footer">
+        <div class="container">
+          <ul class="nav navbar-nav">
+            <li><a>Privacy</a></li>
+            <li><a>Terms of use</a></li>
+            <li><a>Copyright and stuff</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <script>
+        $('.act-btn').tooltip();
+      </script>
+
+
+
+    <!-- User not logged in -->  
+    {{else}}
+      derp, nope
+    {{/if}}
+
+  </body>
+</html>
