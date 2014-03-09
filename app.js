@@ -8,6 +8,7 @@ var express = require('express')
   , passport = require('passport')
   , exphbs = require('express3-handlebars')
   , hbs
+  , _ = require('underscore')
   // models
   , user = require('./model/user')
   , Dog = require('./model/dog')
@@ -68,8 +69,8 @@ console.log(__dirname)
 
 app.get('/', function(req, res){
   if (req.user) {
-    var pets = Dog.find({ owner_id: req.user.email }, function(derp, dog) {
-      res.render('index', { user: req.user, dog: dog });
+    var pets = Dog.find({ owner_id: req.user.email }, function(err, dogs) {
+      res.render('index', { user: req.user, dogs: dogs });
     });
   } else {
     res.render('index')
@@ -86,9 +87,10 @@ app.get('/pet/new', function(req, res) {
 
 app.get('/pet/:id', function(req, res) {
   if (req.user) {
-    var pets = Dog.findOne({ name: req.params.id }, function(derp, dog) {
-      res.render('pet/show', { user: req.user, dog: dog });
-    });
+    var pets = Dog.find({ owner_id: req.user.email }, function(err, dogs) {
+      var dog = _.findWhere(dogs, { name: req.params.id });
+      res.render('pet/show', { user: req.user, dog: dog, dogs: dogs });
+    })
   } else {
     res.render('index')
   }

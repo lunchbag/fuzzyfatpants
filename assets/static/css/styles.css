@@ -7320,7 +7320,7 @@ body {
 #sidebar-nav #sidebar-menu li {
   padding: 10px 15px;
 }
-#sidebar-nav #sidebar-menu lia {
+#sidebar-nav #sidebar-menu li a {
   display: block;
 }
 #sidebar-nav #sidebar-menu li:hover {

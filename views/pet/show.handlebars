@@ -47,10 +47,11 @@
 
         <div id="sidebar-nav">
           <ul id="sidebar-menu">
-              <li><a href="#">Pet #1</a></li>            
-              <li><a href="#">Pet #2</a></li>
-              <li><a href="/pet/new">+ Add pet</a></li>
-            </ul>
+            {{#each dogs}}
+              <li><a href="/pet/{{ name }}">{{ name }}</a></li>
+            {{/each}}
+            <li><a href="#">+ Add pet</a></li>
+          </ul>
         </div>
         {{#if dog}}       
         <div class="content">
