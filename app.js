@@ -22,9 +22,14 @@ require('./model/passport')(passport);
 // HELPERS =============================================================================================================
 
 hbs = exphbs.create({
+  defaultLayout: 'main',
   helpers: {
     derp: function() { return 'hi' }
-  }
+  },
+  partialsDir: [
+        'shared/templates/',
+        'views/partials/'
+    ]
 });
 
 function ensureAuthenticated(req, res, next) {
